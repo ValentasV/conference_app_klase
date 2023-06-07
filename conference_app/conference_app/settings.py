@@ -56,8 +56,11 @@ ROOT_URLCONF = 'conference_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # BACKEND interpretuoja mūsų html failus prieš juos išsiūsdamas į naršyklę,
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
+        # šita funkcija nurodo kelią iki bazinio templates folderio, Django jį sujungia
+        # čia mes nurodom Django, kad žiūrėtų papildomai į šitą papildomą aplankalą, nes kitaip jis jo nematytų
+        'APP_DIRS': True, # Automatiškai ieško template failų sukurtuose APPSUOSE
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -123,3 +126,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = '/Konferencija/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "images")
+MEDIA_URL = "/media/"
