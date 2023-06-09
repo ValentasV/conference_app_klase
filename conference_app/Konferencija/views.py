@@ -17,7 +17,7 @@ class KonferencijaDetailView(DetailView): # # DetailView yra Django biblioteka -
 
 class KonferencijaLikeView(View):
     def get(self, request, konferencijos_id):
-        if not request.user.is_suthenticated:
+        if not request.user.is_authenticated:
             return redirect("login")
 
         konferencija = get_object_or_404(Konferencija, id = konferencijos_id)
