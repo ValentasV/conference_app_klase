@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block "title" %}
+Konferencijų sąrašas
+{% endblock %}
+
+{% block "content" %}
+
+    <ol>
+<!--{% for conference in object_list %}  -  Django viską išsitraukia ir sudeda čia ką rado duomenų bazėje.
+Visą informaciją object_list pasiima iš Views.py failo  KLASĖS ConferenceListView( ListView ):  -->
+        {% for konferencija in object_list %}
+            <li>
+<!--konferencija.id ateina iš konferencija in object_list Django žino kad vietoj url faile esančio "<int:pk>/" reikia paduoti konferencijos id = skačių-->
+                <a href="{% url 'konferencija-detail' konferencija.id %}">{{ konferencija.title }}</a>
+                <!--<a href="/conferences/{{ conference.id }}"<{{ Konferencijos.title }} </a>-->
+                {{ konferencija.start_date }} - {{ konferencija.end_date}}
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

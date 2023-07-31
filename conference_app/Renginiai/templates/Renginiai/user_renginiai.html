@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block "title" %} Mano renginiai {% endblock %}
+
+{% block "content" %}
+
+    <h1>Mano renginiai:</h1>
+<!-- <ol> ordered  sugrupuoti elementai skaičiais-->
+<!-- <ul> unordered nesugrupuoti elementai taškiukais -->
+    <ul>
+<!-- object_list yra mūsų registracijos šiuo atveju ne renginiai-->
+<!-- {% for registracija in object_list %}   “ registracija“ šitoj vietoje galime parašyti bet kokį labiau tinkamą žodį.-->
+<!-- Kad matytume renginių registracijas turime pasiekti renginius :
+  registracija.(kreipimasis į mūsų renginius).event.(renginys yra pas mus kintamasis ir iš jo galime išsitraukti datą, pavadinimą ir panašiai).title
+{{ registracija.event.title }}
+-->
+        {% for registracija in object_list %}
+            <li>
+                <a href="{% url 'renginys-detail' registracija.renginys.id %}">
+                    {{ registracija.renginys.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

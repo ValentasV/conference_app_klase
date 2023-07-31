@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os.path
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "Konferencija",
-    "Renginys",
+    "Konferencijos",
+    "Renginiai",
 ]
 
 MIDDLEWARE = [
@@ -129,9 +129,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# LOGIN_REDIRECT_URL = '/Konferencijos/'    po logino suveikimo mus nukreis tiesiai į šitą url linką
+# (galime parašyti bet kokį nukreipiamajį linką pvz pradžios linką)
+LOGIN_REDIRECT_URL = '/Konferencijos/'
 
-LOGIN_REDIRECT_URL = '/Konferencija/'
-
+# MEDIA_ROOT aplankalas į kurį bus keliamos mūsų nuotraukos (aplankas - "images")
 MEDIA_ROOT = os.path.join(BASE_DIR, "images")
+# MEDIA_URL nurodo kaip tos nuotraukos bus pasiekiamos
 MEDIA_URL = "/media/"
 STATIC_ROOT = Path(BASE_DIR / 'static')

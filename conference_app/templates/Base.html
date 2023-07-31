@@ -19,6 +19,7 @@
     </nav>
     <div class="container py-5">
         {% if user.is_authenticated %}
+<!--user yra vartotojo modelis iš Django-->
         Esate prisijungęs kaip {{ user.username }}
         {% else %}
             <a href="{% url 'login' %}">Prisijunkite</a>

@@ -1,0 +1,64 @@
+<!--Paveldi viską iš base.html, kuris yra templates folderyje-->
+{% extends "base.html" %}
+<!--Čia nurodomas Html tago pavadinimas-->
+{% block "title" %}
+    {{ object.title }}
+{% endblock %}
+<!--Čia nurodomas mūsų turinio Pavadinimas-->
+{% block "content" %}
+<!--"object" yra konferencijos modelio kintamasis kuris pasiima viską iš model = Konferencija (KonferencijaDetailView)-->
+    <h1>{{ object.title }}</h1>
+
+    {{ object.picture.url }}
+<!--su if jeigu nėra nuotraukos nemes klaidos. Nereikalaus, kad būtina pridėti nuotrauką-->
+    {% if object.picture %}
+<!--object.picture.url ateina iš  modelio Class Konferencija   ImageField-->
+<!--Galima keisti nuotraukos mąstellį su height ir width parametrais-->
+        <img src="{{ object.picture.url }}" height="200px">
+    {% endif %}
+<!--<div> išdalina į atskiras eilutes-->
+    <div>Pradzia: {{ object.start_date }}</div>
+    <div>Pabaiga: {{ object.end_date }}</div>
+
+    {{ object.like_set.count }}
+
+    <h2>Renginiai:</h2>
+<!--<ol> nurodo, kad bus sąrašas numeruotas skaičiais-->
+    <ol>
+<!--event_set.all  - yra visas mūsų renginių sąrašas, kuris yra susijęs su mūsų konferencija.-->
+        {% for renginys in object.renginys_set.all %}
+<!--renginys yra modelis iš models.py Renginiai-->
+<!--<li> nurodo, kad bus sąrašo elementas-->
+            <li>
+                <a href="{% url 'renginys-detail' renginys.id %}">
+                    {{ renginys.title }}
+                </a>
+                ({{ renginys.start_date }})
+
+                {% if user.is_authenticated %}
+                    Dalyvauja {{ renginys.visitors }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+    <h2>Komentarai:</h2>
+    {% if user.is_authenticated %}
+        {% if messages %}
+            {% for žinutė in messages %}
+                <div>
+                    {{ žinutė }}
+            {% endfor %}
+        {% endif %}
+                </div>
+        <form action="{% url 'sukurti_komentarą' object.id %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label>Komentaras:</label>
+                <textarea name="komentaras"></textarea>
+            </div>
+            <input type="submit" value="Rašyti komentarą">
+        </form>
+    {% else %}
+        Norint komentuoti reikia <a href="{% url 'login' %}">prisijungti</a>.
+    {% endif %}
+{% endblock %}

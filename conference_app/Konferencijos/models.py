@@ -1,14 +1,14 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+# Jeigu kažką keičiam models.py tada turim daryti migracijas nes keičiasi informacija duomenų bazėse.
 # Create your models here.
 class Konferencija(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     title = models.CharField(max_length=100)
 
-
-    picture = models.ImageField( null = True)
+# kad galėtumėme naudotis nuotraukų modeliu turim instaliuotis pillow (pip install pillow)
+    picture = models.ImageField( blank = True, null = True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     # created_at =  skirtas administratoriams, pasižiūrėti kada kas buvo sukurtas, patobulintas ar sugadintas modelis
@@ -25,3 +25,11 @@ class Like(models.Model):
     konferencija = models.ForeignKey(Konferencija, on_delete = models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+class Komentaras(models.Model):
+    autorius = models.ForeignKey(User, on_delete = models.CASCADE)
+    komentaras = models.TextField()
+    konferencija = models.ForeignKey(Konferencija, on_delete = models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

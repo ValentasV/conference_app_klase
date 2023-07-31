@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block "title" %}
+    Sukurti konferenciją
+{% endblock %}
+
+
+{% block "content" %}
+    <h1>Nauja konferencija</h1>
+
+
+    <form action="{% url 'konferencija-sukurkime' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label>Pradžios data (YYYY-MM-DD):</label>
+            <input type="text" name="start_date">
+        </div>
+        <div>
+            <label>Pabaigos data (YYYY-MM-DD):</label>
+            <input type="text" name="end_date">
+        </div>
+        <div>
+            <label>Pavadinimas:</label>
+            <input type="text" name="title">
+        </div>
+        <input type="submit" value="Sukurti">
+    </form>
+{% endblock %}
