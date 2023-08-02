@@ -2,3 +2,5 @@ conference_app_klase/db.sqlite3
 .env
 .idea
 venv
+*.pyc
+media
