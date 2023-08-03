@@ -6,34 +6,16 @@
 {% endblock %}
 
 {% block "content" %}
-<!-- metodai "post" ir "get"  -->
-<!--<form method="post" action="{% url 'login' %}">    {% url 'login' %}   šita vieta mums sugeneruoja
- accounts/login/-->
 
-<!--method="get" – negali perduoti papildomų duomenų. Gali tik papildomus duomenis perduoti per url pvz...
-input type="text" name=”username”
-input type="password" name=”password”
-Šie parametrai atsispindi url
-/accounts/login/?username=vardas&password=slaptažodis
-BET URL PROBLEMA YRA RIBOTAS DUOMENŲ KIEKIS.
-Bet pagrindinė problema paduodat duomenis per GET  yra kad duomenis yra kaip tekstas o per url juos galima lengvai pamatyti peržiūrėti. Per url yra nesaugu perduoti svarbią informaciją.
--->
-
-<!--method="post" – panašiai veikia kaip ir GET, bet savyje turi tam tikrą dėžutę, kur tie duomenys yra užšifruojami. /accounts/login/?username=vardas&password=slaptažodis  tai yra mums informacija yra paduodama ne per url o kažkur paslėpus viduje ir dar papildomą nusiunčia informaciją į serverį kad yra toks va url.
-Per post metodą paduomi parametrai nėra matomi naršyklės ir jie nėra išsaugomi.
-Get metodas yra gerai kaip norime url nuorodą nukopijuoti ir pasidalinti su kitu asmeniu.
-Arba kaip norime kažką prafiltruoti.
--->
  <form method="post" action="{% url 'login' %}">
 
-<!--{% csrf_token %} kiekvieną kartą apsilankius sugeneruoją naują unikalų raktą, kad galima saugiai prisijungti prie paskyros.
- Veikia ir su get ir su post funkcijomis.-->
+
     {% csrf_token %}
-<!--<table>  elementas reiškia lentele-->
+
     <table>
-<!--<tr> table row – viena eilutė-->
+
       <tr>
-<!--<td> table date – reiškia vieną langelį-->
+
         <td>Vartotojas: </td>
         <td>{{ form.username }}</td>
       </tr>
@@ -42,8 +24,7 @@ Arba kaip norime kažką prafiltruoti.
         <td>{{ form.password }}</td>
       </tr>
     </table>
-<!--<input type="submit" value="Prisijungti"/> prisijungimo simbolio mygtukas ‚submit‘
-kuomet paspausime mygtuką submit viską nusiūs mums į šį {% url 'login' %} url.-->
+
     <input type="submit" value="Prisijungti" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>

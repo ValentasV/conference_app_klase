@@ -2,9 +2,7 @@
 
 {% block "title" %}
 
-<!--   {%.......%}  - reiškia komandą-->
-<!--   {{........}}  - reiškia išvedimą į ekraną.-->
-<!--  <br>  elementas yra tarpas-->
+
 
 Renginiai
 
@@ -12,40 +10,35 @@ Renginiai
 
 
 {% block "content" %}
-<!--Kadangi pakeitėm  objects  pavadinimą į renginys galime rašyti taip  renginys.title  ir t.t.-->
+
 <h1 xmlns="http://www.w3.org/1999/html">Renginys: {{ renginys.title }}</h1>
 
 <div>Pradžia: {{ renginys.date }}</div>
-<!--renginysregistration  yra class RenginysRegistration iš models.py
- kad  Django htmt faile  suprastu ir perskaitytų  klasę turime ją parašyti mažosiomis raidėmis-->
+
 <div>Jau dalyvauja: {{ renginys.renginysregistration_set.count }}</div>
-<!--renginys.id ateina iš RenginysDetailView-->
-<!--ŠIOS ABI UŽSIREGISTRUOTI skirtos formos yra vienodos tik antro užrašymo privalumas tame, kad nereikia mums prisiminti pilno kelio
-kitaip sakant jeigu pakeisime kelią, mums nereikės čia jo keitinėti nes mūsų sukurta nuoroda automatiškai tą kelią suras-->
+
 <a href="/Renginys/register/{{ renginys.id }}">Užsiregistruoti</a>
-<!--{% url 'register-visitor' renginys.id %}
-  pagal šią funkciją sugeneruojaam nuorodą į Views pavadinimą, kurį patys užrašėme  'register-visitor' urls.py file-->
+
 <a href="{% url 'register-visitor' renginys.id %}">Užsiregistruoti</a>
 
   <br>
   {% if messages %}
-    {% for msg in messages %} <!-- Eina per kiekvieną views.py failą esantį messages pranešimą. Klaidų pranešimai rodomi puslapyje-->
+    {% for msg in messages %}
       <div class="alert alert-danger">{{ msg }}</div>
     {% endfor %}
   {% endif %}
   <br>
 
 
-<!--   Šis url 'renginys-detail'- paima informacija iš RenginysDetailView   -->
+
 <form action="{% url 'renginys-detail' renginys.id %}" method="post">
 
-<!--csrf_token - apsaugo nuo įsibrovėlių-->
+
     {% csrf_token %}
     <div>
-<!--     <label>Įmonės pavadinimas:</label>  laukelio pavadinimas pagalbinis laukelis vartotojui, kad žinotų ką reikia įrašyti.  -->
+
         <label>Įmonės pavadinimas:</label>
-<!--     <input type="text" name="imones_pavadinimas">  nurodom, ką ir kaip į tą laukelį vartotojas galės įrašyti-->
-<!--     <input type="text" žmogus gali ivesti tekstą   "number" gali įvesti skaičių-->
+
         <input type="text" name="įmonės_pavadinimas">
     </div>
     <div>
@@ -57,7 +50,7 @@ kitaip sakant jeigu pakeisime kelią, mums nereikės čia jo keitinėti nes mūs
         <textarea name="Pastabos"></textarea>
     </div>
 
-<!--    <input type="submit" value="Registruotis">   "submit" atsiranda registracijos mygtukas su užrašu registruotis-->
+
     <input type="submit" value="Registruotis">
 </form>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path
-from Renginiai.views import RenginysDetailView, RegisterVisitorView, UserEventList
+from .views import RenginysDetailView, RegisterVisitorView, UserEventList
 
 urlpatterns = [
     # int   Django tikėsis sveiko skaičiaus   pk pirminis raktas paimtas iš Renginio modelio.

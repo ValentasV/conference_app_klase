@@ -1,5 +1,4 @@
-from Konferencijos.views import KonferencijaListView,\
-    KonferencijaDetailView, KonferencijaLikeView, SukurtiKomentaroView, SusikurkimeKonferencijosView
+from .views import KonferencijaListView, KonferencijaDetailView, KonferencijaLikeView, SukurtiKomentaroView, SusikurkimeKonferencijosView
 from django.urls import path
 
 urlpatterns = [ # čia yra nurodomi keliai į klases iš views.py filo
