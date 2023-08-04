@@ -140,3 +140,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "images")
 # MEDIA_URL nurodo kaip tos nuotraukos bus pasiekiamos
 MEDIA_URL = "/media/"
 STATIC_ROOT = Path(BASE_DIR / 'static')
+
+
+
+LOGGING = {
+'version': 1,
+'disable_existing_loggers': False,
+'handlers': {
+'console': {
+'level': 'DEBUG',
+'class': 'logging.StreamHandler',
+},
+'logfile': {
+'level': 'DEBUG',
+'class': 'logging.FileHandler',
+'filename': os.path.join(BASE_DIR, 'django-logfile'),
+},
+},
+'root': {
+'level': 'INFO',
+'handlers': ['console', 'logfile']
+},
+}
