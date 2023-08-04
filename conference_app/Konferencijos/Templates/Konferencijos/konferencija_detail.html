@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block "title" %}
@@ -9,10 +8,9 @@
 
     <h1>{{ object.title }}</h1>
 
-    {{ object.picture.url }}
+<!--    {{ object.picture.url }}-->
 
     {% if object.picture %}
-
         <img src="{{ object.picture.url }}" height="200px">
     {% endif %}
 
