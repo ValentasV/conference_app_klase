@@ -3,4 +3,4 @@ conference_app_klase/db.sqlite3
 .idea
 venv
 *.pyc
-conference_app/images
+conference_app/media

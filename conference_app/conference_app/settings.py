@@ -135,8 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # (galime parašyti bet kokį nukreipiamajį linką pvz pradžios linką)
 LOGIN_REDIRECT_URL = '/Konferencijos/'
 
-# MEDIA_ROOT aplankalas į kurį bus keliamos mūsų nuotraukos (aplankas - "images")
-MEDIA_ROOT = os.path.join(BASE_DIR, "images")
+# MEDIA_ROOT aplankalas į kurį bus keliamos mūsų nuotraukos (aplankas - "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # MEDIA_URL nurodo kaip tos nuotraukos bus pasiekiamos
 MEDIA_URL = 'media/'
 STATIC_ROOT = Path(BASE_DIR / 'static')

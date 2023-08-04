@@ -28,7 +28,7 @@ urlpatterns = [
     path("Renginiai/", include("Renginiai.urls")),
 ]
 
-# Kad vartotojas matytų nuotraukas "images" reikia url nurodyti kelią. tam naudojama speciali komanda "static" (ši komanda gražina listą).
+# Kad vartotojas matytų nuotraukas "media" reikia url nurodyti kelią. tam naudojama speciali komanda "static" (ši komanda gražina listą).
 # "Static komanda leidža pasiekti bet kokį failą, kuris yra kokiam nors folderyje. Tą mes ir padarėm apačioje nurodėk kelią iki nuotraukų.
 # kuomet importuojame setings tai importuojame ne patį setings.py failą bet django.conf  (settings)
 # Pirma kreipiamės į url o po to į aplankalą kuriame yra nuotraukos.
