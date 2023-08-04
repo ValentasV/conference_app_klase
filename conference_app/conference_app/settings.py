@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # BACKEND interpretuoja mūsų html failus prieš juos išsiūsdamas į naršyklę,
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates"), os.path.join(BASE_DIR, "Konferencijos/Templates"), os.path.join(BASE_DIR, "Renginiai/templates")],
         # šita funkcija nurodo kelią iki bazinio templates folderio, Django jį sujungia
         # čia mes nurodom Django, kad žiūrėtų papildomai į šitą papildomą aplankalą, nes kitaip jis jo nematytų
         'APP_DIRS': True, # Automatiškai ieško template failų sukurtuose APPSUOSE
