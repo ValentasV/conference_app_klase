@@ -26,6 +26,7 @@ class KonferencijaListView(ListView): # ListView yra Django biblioteka - klasė 
 
 class KonferencijaDetailView(DetailView): # # DetailView yra Django biblioteka - klasė kuri viską už mus padaro
     model = Konferencija
+    template_name = "Konferencijos/konferencija_detail.html"
 # class KonferencijaDetailView( DetailView ):  kuomet mes iškviesime Detail view klasę duosime elementą
 # object_ - konferencija_detail.html
 # DetailView – duoda daaugiau detalių iš vienos konferencijos
